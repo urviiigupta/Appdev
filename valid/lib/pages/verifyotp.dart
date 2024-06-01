@@ -2,11 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+import 'package:valid/controllers/auth_controller.dart';
 
 
 class VerifyOtpPage extends StatefulWidget {
-  const VerifyOtpPage({super.key,required this.phoneNumber});
+  const VerifyOtpPage({super.key,required this.phoneNumber,required this.verificationId});
   final String phoneNumber;
+  final String verificationId;
 
   @override
   State<VerifyOtpPage> createState() => __VerifyOtpPageState();
@@ -38,7 +40,8 @@ class __VerifyOtpPageState extends State<VerifyOtpPage> {
                     length:6,
                     onChanged: (value) => setState(() => otp = value),
                     onCompleted: (value){
-                      print("HELLOO");
+                      
+                      PhoneAuthController.verifyOtp(context, widget.verificationId, value);
                     },
                   ),
                 ],

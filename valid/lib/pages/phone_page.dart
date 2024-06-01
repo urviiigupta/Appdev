@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:valid/pages/verifyotp.dart';
+import 'package:valid/controllers/auth_controller.dart';
 
 class PhonePage extends StatefulWidget {
   const PhonePage({super.key});
@@ -14,7 +15,7 @@ class _PhonePageState extends State<PhonePage> {
   bool enableotp=false;
   String phoneNumber = '';
   getOtp(){
-    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>VerifyOtpPage(phoneNumber: phoneNumber)));
+    PhoneAuthController.sendOtp(context, phoneNumber);
   }
 
   @override
